@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSSON Docs</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <script type="module" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+        <style>
+            body {
+                font-family:
+                    "Onest",
+                    "SF Pro Display",
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    sans-serif;
+                background: #ffffff;
+                color: #000000;
+                margin: 0;
+                scroll-behavior: smooth;
+            }
+
+            #navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 260px;
+                height: 100%;
+                overflow-y: auto;
+                background: linear-gradient(180deg, #000000 0%, #020202 100%);
+                padding: 30px 25px;
+                border-right: 1px solid #333;
+            }
+
+            #navbar h2 {
+                color: #ffffff;
+                margin-top: 0;
+                font-size: 1.8em;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+                margin-bottom: 30px;
+            }
+
+            #navbar a {
+                display: block;
+                margin-bottom: 12px;
+                color: #cccccc;
+                text-decoration: none;
+                padding: 10px 15px;
+                border-radius: 8px;
+                font-size: 0.95em;
+            }
+
+            #navbar a:hover {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            #content {
+                margin-left: 310px;
+                margin-right: 50px;
+                padding: 40px;
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: 360px;
+            }
+
+            #docs > * {
+                animation: fadeInUp 0.6s ease-out forwards;
+                opacity: 0;
+            }
+
+            #docs > *:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+            #docs > *:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            #docs > *:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+            #docs > *:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+            #docs > *:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: #000;
+                margin-top: 2rem;
+                margin-bottom: 0.8rem;
+                font-weight: 600;
+            }
+
+            h1 {
+                font-size: 2.5em;
+                border-bottom: 2px solid #444444;
+                padding-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            p {
+                margin-bottom: 1.2rem;
+                line-height: 1.7;
+            }
+
+            a {
+                color: #0747ae;
+                text-decoration: none;
+                position: relative;
+            }
+
+            a::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -2px;
+                left: 0;
+
+                transition: width 0.3s ease;
+            }
+
+            a:hover::after {
+                width: 100%;
+            }
+
+            pre,
+            code {
+                font-family: "JetBrains Mono", "Source Code Pro", monospace;
+                background: #eeeded;
+                color: #000;
+                border-radius: 8px;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                font-size: 0.9em;
+                line-height: 1.6;
+            }
+
+            pre {
+                margin-bottom: 1.5rem;
+                display: block;
+                position: relative;
+                padding: 45px 16px 16px 16px;
+            }
+
+            code {
+                display: inline;
+                padding: 3px 8px;
+            }
+
+            pre::-webkit-scrollbar,
+            code::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+            }
+
+            pre,
+            code {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            .code-header {
+                position: absolute;
+                top: 8px;
+                left: 16px;
+                right: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 7px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .code-lang {
+                font-size: 0.75em;
+                font-family: "Onest", sans-serif;
+                color: #666;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .copyBtn {
+                background: #000;
+                border: none;
+                border-radius: 6px;
+                padding: 6px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            .copyBtn:hover {
+                background: #333;
+            }
+
+            .copyBtn .icon {
+                width: 20px;
+                height: 20px;
+                transition: opacity 0.3s;
+            }
+
+            .copyBtn .check {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+            }
+
+            blockquote {
+                border-left: 3px solid #1a73e8;
+                padding-left: 20px;
+                color: #555;
+                margin: 1.5rem 0;
+                font-size: 0.95em;
+                line-height: 1.7;
+                font-style: italic;
+                background: #f9f9f9;
+                padding: 15px 20px;
+                border-radius: 0 8px 8px 0;
+            }
+
+            ul,
+            ol {
+                margin-left: 1.5rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+            }
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+
+            table {
+                border-collapse: collapse;
+                margin-bottom: 1.5rem;
+                width: 100%;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid #e0e0e0;
+                padding: 12px 16px;
+            }
+
+            th {
+                background: #f5f5f5;
+                font-weight: 600;
+                text-align: left;
+            }
+
+            tr:hover {
+                background: #fafafa;
+            }
+
+            button {
+                background: #000;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-family: inherit;
+                margin-top: 5px;
+                font-weight: 500;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            button:hover {
+                background: #333;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            button:active {
+                transform: translateY(0);
+            }
+
+            #navbar::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #navbar::-webkit-scrollbar-track {
+                background: #1a1a1a;
+            }
+
+            #navbar::-webkit-scrollbar-thumb {
+                background: #444;
+                border-radius: 3px;
+            }
+
+            #navbar::-webkit-scrollbar-thumb:hover {
+                background: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="navbar">
+            <h2>CSSON Docs</h2>
+            <div id="navlinks"></div>
+        </div>
+
+        <div id="content">
+            <div id="docs"></div>
+        </div>
+
+        <script type="module">
+            import { marked } from "https://esm.sh/marked@5.1.1";
+
+            const docs = document.getElementById("docs");
+            const navlinks = document.getElementById("navlinks");
+
+            async function loadreadme(url) {
+                try {
+                    const text = await fetch(url).then((r) => r.text());
+
+                    docs.innerHTML = marked.parse(text, {
+                        gfm: true,
+                        breaks: true,
+                    });
+
+                    const preEl = docs.querySelectorAll("pre");
+                    preEl.forEach((pre) => {
+                        const codeEl = pre.querySelector("code");
+                        let lang = "";
+
+                        if (codeEl && codeEl.className) {
+                            const match = codeEl.className.match(/language-(\w+)/);
+                            if (match) {
+                                lang = match[1];
+                            }
+                        }
+
+                        const header = document.createElement("div");
+                        header.className = "code-header";
+
+                        if (lang) {
+                            const lang = document.createElement("span");
+                            lang.className = "code-lang";
+                            lang.textContent = lang;
+                            header.appendChild(lang);
+                        }
+
+                        const copy = document.createElement("button");
+                        copy.className = "copyBtn";
+                        copy.title = "Copy code";
+
+                        const icon = document.createElement("img");
+                        icon.className = "icon";
+                        icon.src =
+                            "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M16%202H12C9.17157%202%207.75736%202%206.87868%202.94627C6%203.89254%206%205.41554%206%208.46154V9.53846C6%2012.5845%206%2014.1075%206.87868%2015.0537C7.75736%2016%209.17157%2016%2012%2016H16C18.8284%2016%2020.2426%2016%2021.1213%2015.0537C22%2014.1075%2022%2012.5845%2022%209.53846V8.46154C22%205.41554%2022%203.89254%2021.1213%202.94627C20.2426%202%2018.8284%202%2016%202Z%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3Cpath%20d%3D%22M18%2016.6082C17.9879%2018.9537%2017.8914%2020.2239%2017.123%2021.0525C16.2442%2022%2014.8298%2022%2012.0011%2022H8.00065C5.17192%2022%203.75755%2022%202.87878%2021.0525C2%2020.1049%202%2018.5799%202%2015.5298V14.4515C2%2011.4014%202%209.87638%202.87878%208.92885C3.52015%208.2373%204.44682%208.05047%206.00043%208%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E";
+
+                        const check = document.createElement("img");
+                        check.className = "check";
+                        check.src =
+                            "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22m4.5%2012.75%206%206%209-13.5%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E";
+
+                        copy.appendChild(icon);
+                        copy.appendChild(check);
+
+                        copy.addEventListener("click", () => {
+                            const content = codeEl ? codeEl.textContent : pre.textContent;
+                            navigator.clipboard.writeText(content).then(() => {
+                                icon.style.opacity = "0";
+                                check.style.opacity = "1";
+
+                                setTimeout(() => {
+                                    icon.style.opacity = "1";
+                                    check.style.opacity = "0";
+                                }, 1200);
+                            });
+                        });
+
+                        header.appendChild(copy);
+                        pre.insertBefore(header, pre.firstChild);
+                    });
+
+                    const headings = docs.querySelectorAll("h1, h2, h3");
+                    headings.forEach((h, i) => {
+                        const id = `heading-${i}`;
+                        h.id = id;
+                        const a = document.createElement("a");
+                        a.href = `#${id}`;
+                        a.textContent = h.textContent;
+                        navlinks.appendChild(a);
+                    });
+
+                    document.querySelectorAll("#navbar a").forEach((link) => {
+                        link.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            const target = document.querySelector(link.getAttribute("href"));
+                            if (target) {
+                                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                            }
+                        });
+                    });
+                } catch (err) {
+                    docs.innerHTML = `<p style="color:red;">Failed to load markdown: ${err.message}</p>`;
+                }
+            }
+
+            loadreadme("https://raw.githubusercontent.com/outbrowsed/csson/main/README.md");
+        </script>
+    </body>
+</html>

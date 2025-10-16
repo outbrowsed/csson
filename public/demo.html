@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSSON Demo</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+            @import url("https://github.com/gustambolopez/Files/blob/main/opensans.css");
+            @import url("https://cdn.jsdelivr.net/gh/gustambolopez/Files@main/sf_pro.css");
+            @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
+            @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap");
+
+            * {
+                scroll-behavior: smooth;
+            }
+
+            *::-webkit-scrollbar {
+                width: 0px;
+                height: 0px;
+            }
+
+            * {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            body {
+                font-family:
+                    "Onest",
+                    "opensans",
+                    "SF Pro Display",
+                    "SF Pro Text",
+                    "Nunito",
+                    "Plus Jakarta Sans",
+                    "Lexend",
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    sans-serif;
+                background: #ffffff;
+                color: #000000;
+                padding: 20px;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+            }
+
+            input,
+            textarea {
+                font-family: "JetBrains Mono", "Source Code Pro", monospace;
+                background: #f0f0f0;
+                color: #000000;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+                overflow: auto;
+                scroll-behavior: smooth;
+            }
+
+            textarea {
+                height: 200px;
+                resize: vertical;
+            }
+
+            pre {
+                font-family: "JetBrains Mono", "Source Code Pro", monospace;
+                background: #f0f0f0;
+                color: #000000;
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                width: 100%;
+                overflow-x: auto;
+                box-sizing: border-box;
+                scroll-behavior: smooth;
+            }
+
+            input::-webkit-scrollbar,
+            textarea::-webkit-scrollbar,
+            pre::-webkit-scrollbar {
+                width: 0px;
+                height: 0px;
+            }
+
+            input,
+            textarea,
+            pre {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            button {
+                background: #000000;
+                color: #ffffff;
+                border: none;
+                border-radius: 10px;
+                padding: 8px 12px;
+                margin-top: 10px;
+                margin-right: 5px;
+                cursor: pointer;
+                font-family: inherit;
+            }
+
+            button:hover {
+                background: #333333;
+            }
+
+            h1,
+            h2 {
+                color: #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>csson demo</h1>
+
+        <textarea id="cssoncode" placeholder="csson content will be loaded here"></textarea><br />
+        <button id="parsecsson">Parse csson</button>
+        <button id="export">Export as json</button>
+        <h2>Parsed csson:</h2>
+        <div style="position: relative">
+            <pre id="parsedoutput"></pre>
+            <button
+                class="copyBtn"
+                data-target="parsedoutput"
+                title="Copy"
+                style="
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: #000;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 6px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                "
+            >
+                <img
+                    class="icon"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M16%202H12C9.17157%202%207.75736%202%206.87868%202.94627C6%203.89254%206%205.41554%206%208.46154V9.53846C6%2012.5845%206%2014.1075%206.87868%2015.0537C7.75736%2016%209.17157%2016%2012%2016H16C18.8284%2016%2020.2426%2016%2021.1213%2015.0537C22%2014.1075%2022%2012.5845%2022%209.53846V8.46154C22%205.41554%2022%203.89254%2021.1213%202.94627C20.2426%202%2018.8284%202%2016%202Z%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3Cpath%20d%3D%22M18%2016.6082C17.9879%2018.9537%2017.8914%2020.2239%2017.123%2021.0525C16.2442%2022%2014.8298%2022%2012.0011%2022H8.00065C5.17192%2022%203.75755%2022%202.87878%2021.0525C2%2020.1049%202%2018.5799%202%2015.5298V14.4515C2%2011.4014%202%209.87638%202.87878%208.92885C3.52015%208.2373%204.44682%208.05047%206.00043%208%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    style="width: 20px; height: 20px; transition: opacity 0.3s"
+                />
+                <img
+                    class="check"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22m4.5%2012.75%206%206%209-13.5%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    style="
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 6px;
+                        left: 6px;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0.3s;
+                    "
+                />
+            </button>
+        </div>
+
+        <h2>Stringified csson:</h2>
+        <div style="position: relative">
+            <pre id="stringifiedOutput"></pre>
+            <button
+                class="copyBtn"
+                data-target="stringifiedOutput"
+                title="Copy"
+                style="
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: #000;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 6px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                "
+            >
+                <img
+                    class="icon"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M16%202H12C9.17157%202%207.75736%202%206.87868%202.94627C6%203.89254%206%205.41554%206%208.46154V9.53846C6%2012.5845%206%2014.1075%206.87868%2015.0537C7.75736%2016%209.17157%2016%2012%2016H16C18.8284%2016%2020.2426%2016%2021.1213%2015.0537C22%2014.1075%2022%2012.5845%2022%209.53846V8.46154C22%205.41554%2022%203.89254%2021.1213%202.94627C20.2426%202%2018.8284%202%2016%202Z%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3Cpath%20d%3D%22M18%2016.6082C17.9879%2018.9537%2017.8914%2020.2239%2017.123%2021.0525C16.2442%2022%2014.8298%2022%2012.0011%2022H8.00065C5.17192%2022%203.75755%2022%202.87878%2021.0525C2%2020.1049%202%2018.5799%202%2015.5298V14.4515C2%2011.4014%202%209.87638%202.87878%208.92885C3.52015%208.2373%204.44682%208.05047%206.00043%208%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    style="width: 20px; height: 20px; transition: opacity 0.3s"
+                />
+                <img
+                    class="check"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22m4.5%2012.75%206%206%209-13.5%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    style="
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 6px;
+                        left: 6px;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0.3s;
+                    "
+                />
+            </button>
+        </div>
+
+        <script type="module">
+            // it can be also imported as CSSON since its case insensitive same for all csson imports
+            import { csson } from "https://cdn.jsdelivr.net/gh/gustambolopez/csson@latest/dist/index.min.mjs";
+
+            let parsedObj = null;
+            // load the csson file
+            const demo = "./example.csson";
+
+            const update = () => {
+                objOutput.textContent = JSON.stringify(parsedObj, null, 2);
+                // stringify the object
+                output.textContent = csson.stringify(parsedObj);
+            };
+            const cssonInput = document.getElementById("cssoncode");
+            const parsebutton = document.getElementById("parsecsson");
+
+            const parseInput = () => {
+                // similar to json we use csson.parse or csson.stringify CSSON.parse and CSSON.stringify also work
+                parsedObj = csson.parse(cssonInput.value);
+                update();
+            };
+            const objOutput = document.getElementById("parsedoutput");
+            const loadcsson = async (file) => {
+                try {
+                    const text = await (await fetch(file)).text();
+                    cssonInput.value = text;
+                    parseInput();
+                } catch (e) {
+                    objOutput.textContent = `failed to load csson file: ${e.message}`;
+                }
+            };
+
+            document.querySelectorAll(".copyBtn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const targetId = btn.getAttribute("data-target");
+                    const content = document.getElementById(targetId).textContent;
+                    const icon = btn.querySelector(".icon");
+                    const check = btn.querySelector(".check");
+
+                    navigator.clipboard.writeText(content).then(() => {
+                        icon.style.opacity = "0";
+                        check.style.opacity = "1";
+
+                        setTimeout(() => {
+                            icon.style.opacity = "1";
+                            check.style.opacity = "0";
+                        }, 1200);
+                    });
+                });
+            });
+            const exportJson = document.getElementById("export");
+            const exportjson = () => {
+                // export the parsed output as a json file
+                if (!parsedObj) return alert("Parse CSSON first!");
+                const blob = new Blob([JSON.stringify(parsedObj, null, 2)], {
+                    type: "application/json",
+                });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "export.json";
+                a.click();
+            };
+
+            parsebutton.addEventListener("click", parseInput);
+            exportJson.addEventListener("click", exportjson);
+            const output = document.getElementById("stringifiedOutput");
+            loadcsson(demo);
+        </script>
+    </body>
+</html>

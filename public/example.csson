@@ -1,0 +1,32 @@
+// config
+/* jsdoc comment allowed */
+theme {
+  color: #ff0000
+  fontsize: 16px
+  description: `This is a
+multi-line string example`  // multi line string
+}
+
+// array (u can also use json inside csson because its a json superset)
+users [
+  "alice"
+  "bob"
+]
+
+extra {
+  nestedKey: "value"  // nested object
+  optionalFlag        // will default to true
+}
+
+/* jsdoc comment */
+metadata {
+  createdby: "s16"
+  version: 1.0
+  tags: ["demo", "csson", "example"] // array of tags
+}
+
+// optional trailing commas and semicolons are allowed
+misc {
+  note: "this is a csson file"
+  debug: false
+}
