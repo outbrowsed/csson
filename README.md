@@ -19,7 +19,7 @@ Perfect for configs, themes, and dynamic settings in js projects.
 ---
 
 Demo:
-[Demo](./demo.html)
+[Demo](https://csson.outbrowsed.xyz/demo.html)
 
 ---
 
@@ -39,7 +39,7 @@ Include via es Module:
 
 ```js
 
-import { CSSON } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson/index.mjs";
+import { CSSON } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson@main/src/index.min.mjs";
 ````
 
 ---
@@ -50,7 +50,7 @@ import { CSSON } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson/index.mjs";
 
 ```js
 
-import { CSSON } from "./index.mjs";
+import { CSSON } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson@main/src/index.min.mjs";
 
 const text = `
 theme {
