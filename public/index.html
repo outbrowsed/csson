@@ -2,8 +2,43 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>CSSON</title>
+        <title>OutBrowsed |CSSON</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Utility JSON superset" />
+        <meta name="keywords" content="outbrowsed, project, csson, json, superset" />
+        <meta name="author" content="@OutBrowsed" />
+        <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta name="language" content="English" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <link
+            rel="preload"
+            as="image"
+            href="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
+        />
+
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="
+    default-src *;
+    script-src * 'unsafe-inline' 'unsafe-eval';
+    style-src * 'unsafe-inline';
+    img-src * data:;
+    font-src *;
+    connect-src *;
+    frame-src *;
+"
+        />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta
+            http-equiv="Permissions-Policy"
+            content="geolocation=(), microphone=(), camera=(), payment=()"
+        />
+
         <link
             href="https://framerusercontent.com/images/EKbJ5Et5vOKk2VINxvmhpPX6Lg8.png"
             rel="icon"
@@ -16,15 +51,36 @@
         />
         <link
             rel="apple-touch-icon"
+            sizes="180x180"
             href="https://framerusercontent.com/images/nHrIMisnVn3Fgn9GZhki9WpKo.png"
         />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+            name="msapplication-TileImage"
+            content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
+        />
+
+        <link rel="preconnect" href="https://framerusercontent.com" crossorigin />
+        <link rel="dns-prefetch" href="https://framerusercontent.com" />
+
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="OutBrowsed | CSSON" />
+        <meta property="og:title" content="OutBrowsed | CSSON " />
         <meta property="og:description" content="Utility JSON superset" />
         <meta
             property="og:image"
             content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
         />
+        <meta property="og:image:alt" content="OutBrowsed Logo" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://outbrowsed.xyz" />
+        <meta property="og:site_name" content="OutBrowsed" />
+        <meta property="og:locale" content="en_US" />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="OutBrowsed | CSSON" />
         <meta name="twitter:description" content="Utility JSON superset" />
@@ -32,20 +88,44 @@
             name="twitter:image"
             content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
         />
+        <meta name="twitter:image:alt" content="OutBrowsed Logo" />
+        <meta name="twitter:creator" content="@OutBrowsed" />
+        <meta name="twitter:site" content="@OutBrowsed" />
+
+        <meta name="apple-mobile-web-app-title" content="OutBrowsed | CSSON" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "OutBrowsed",
+                "url": "https://outbrowsed.xyz",
+                "description": "",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "OutBrowsed",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png",
+                        "width": 1200,
+                        "height": 630
+                    }
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png",
+                    "width": 1200,
+                    "height": 630
+                },
+                "inLanguage": "en-US",
+                "sameAs": []
+            }
+        </script>
+
         <link
             href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap"
             rel="stylesheet"
         />
 
@@ -55,7 +135,6 @@
             body {
                 font-family:
                     "Onest",
-                    "SF Pro Display",
                     system-ui,
                     -apple-system,
                     BlinkMacSystemFont,
@@ -378,6 +457,7 @@
                 background: #666;
             }
         </style>
+      <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
     </head>
     <body>
         <div id="navbar">
@@ -488,3 +568,4 @@
         </script>
     </body>
 </html>
+
