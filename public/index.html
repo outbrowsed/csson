@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>CSSON Docs</title>
+        <title>CSSON</title>
 
         <link
             href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
@@ -392,10 +392,10 @@
                         header.className = "code-header";
 
                         if (lang) {
-                            const lang = document.createElement("span");
-                            lang.className = "code-lang";
-                            lang.textContent = lang;
-                            header.appendChild(lang);
+                            const langSpan = document.createElement("span");
+                            langSpan.className = "code-lang";
+                            langSpan.textContent = lang;
+                            header.appendChild(langSpan);
                         }
 
                         const copy = document.createElement("button");
@@ -456,7 +456,7 @@
                 }
             }
 
-            loadreadme("https://cdn.jsdelivr.net/gh/outbrowsed/csson@main/README.md");
+            loadreadme("https://raw.githubusercontent.com/outbrowsed/csson/main/README.md");
         </script>
     </body>
 </html>
