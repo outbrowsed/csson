@@ -7,7 +7,8 @@ const patterns = {
 	number: /-?(?:\d+\.?\d*|\.\d+)/y,
 	unit: /[a-zA-Z%]+/y,
 	identifier: /[a-zA-Z_$][a-zA-Z0-9_$-]*/y,
-	operators: /[{}[\]:;,]/y,
+	function: /[a-zA-Z_$][a-zA-Z0-9_$-]*\(/y,
+	operators: /[{}[\]:;,()]/y,
 };
 
 const keywords = { true: true, false: false, null: null, undefined: undefined };
@@ -56,6 +57,20 @@ const tokenize = (text) => {
 			continue;
 		}
 
+		const func = testPattern(patterns.function);
+		if (func) {
+			const start = i;
+			i += func.length;
+			let depth = 1;
+			while (i < len && depth > 0) {
+				if (text[i] === "(") depth++;
+				if (text[i] === ")") depth--;
+				i++;
+			}
+			tokens.push({ type: "FUNCTION", value: text.slice(start, i) });
+			continue;
+		}
+
 		const hex = testPattern(patterns.hex);
 		if (hex) { tokens.push({ type: "HEX", value: hex }); i += hex.length; continue; }
 
@@ -73,7 +88,7 @@ const tokenize = (text) => {
 
 		const op = testPattern(patterns.operators);
 		if (op) {
-			const map = { "{": "BRACE_OPEN", "}": "BRACE_CLOSE", "[": "BRACKET_OPEN", "]": "BRACKET_CLOSE", ":": "COLON", ";": "SEMICOLON", ",": "COMMA" };
+			const map = { "{": "BRACE_OPEN", "}": "BRACE_CLOSE", "[": "BRACKET_OPEN", "]": "BRACKET_CLOSE", ":": "COLON", ";": "SEMICOLON", ",": "COMMA", "(": "PAREN_OPEN", ")": "PAREN_CLOSE" };
 			tokens.push({ type: map[op] });
 			i += op.length;
 			continue;
@@ -101,13 +116,12 @@ const parse = (tokens) => {
 			case "UNIT":
 			case "IDENTIFIER":
 			case "KEYWORD": return tokens[pos++].value;
+			case "FUNCTION": return tokens[pos++].value;
 			default: throw new Error(`Unexpected token: ${token.type}`);
 		}
 	};
 
-	const consumeSeparator = () => {
-		if (pos < len && ["COMMA", "SEMICOLON"].includes(tokens[pos].type)) pos++;
-	};
+	const consumeSeparator = () => { if (pos < len && ["COMMA","SEMICOLON"].includes(tokens[pos].type)) pos++; };
 
 	const parseArray = () => {
 		pos++;
@@ -126,12 +140,8 @@ const parse = (tokens) => {
 		while (pos < len && tokens[pos].type !== "BRACE_CLOSE") {
 			const keyToken = tokens[pos++];
 			const keyName = keyToken.value;
-			if (pos < len && tokens[pos].type === "COLON") {
-				pos++;
-				obj[keyName] = parseValue();
-			} else {
-				obj[keyName] = true;
-			}
+			if (pos < len && tokens[pos].type === "COLON") { pos++; obj[keyName] = parseValue(); }
+			else { obj[keyName] = true; }
 			consumeSeparator();
 		}
 		if (pos < len && tokens[pos].type === "BRACE_CLOSE") pos++;
@@ -164,14 +174,14 @@ const stringifyCSSON = (obj, indent = 0) => {
 	}
 
 	if (Array.isArray(obj)) {
-		const items = obj.map(item => `${nextSpace}${stringifyCSSON(item, indent + 1)}`).join(",\n");
+		const items = obj.map(item => `${nextSpace}${stringifyCSSON(item, indent+1)}`).join(",\n");
 		return `[\n${items}\n${space}]`;
 	}
 
-	const entries = Object.entries(obj).map(([k, v]) => {
+	const entries = Object.entries(obj).map(([k,v]) => {
 		const key = /^[a-zA-Z_$][a-zA-Z0-9_$-]*$/.test(k) ? k : `"${k}"`;
-		if (typeof v === "object" && v !== null && !Array.isArray(v)) return `${key} ${stringifyCSSON(v, indent + 1)}`;
-		return `${nextSpace}${key}: ${stringifyCSSON(v, indent + 1)}`;
+		if (typeof v === "object" && v !== null && !Array.isArray(v)) return `${key} ${stringifyCSSON(v, indent+1)}`;
+		return `${nextSpace}${key}: ${stringifyCSSON(v, indent+1)}`;
 	});
 
 	return `{\n${entries.join("\n")}\n${space}}`;
@@ -180,11 +190,5 @@ const stringifyCSSON = (obj, indent = 0) => {
 const CSSONparse = parseCSSON;
 const CSSONstringify = stringifyCSSON;
 
-export const CSSON = {
-	parse: parseCSSON,
-	CSSONparse,
-	stringify: stringifyCSSON,
-	CSSONstringify,
-};
-
+export const CSSON = { parse: parseCSSON, CSSONparse, stringify: stringifyCSSON, CSSONstringify };
 export const csson = CSSON;
