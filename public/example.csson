@@ -22,15 +22,15 @@ theme {
 multi line string example`
 
   // Functions and references
-  gradient: linear-gradient(#fff, #000)
-  widthCalc: calc(100% - 20px)
+  gradient: "linear-gradient(#fff,#000)"
+  widthCalc: "calc(100% - 20px)"
   mainColor: color
 
   // Nested objects
   header {
     height: 60px
     background: #111
-    shadow: 0 2 4 rgba(0, 0, 0, 0.5)
+    shadow: 0 2 4 rgba(0,0,0,0.5)
     links: [
       "Home"
       "About"
@@ -47,8 +47,8 @@ multi line string example`
       hover: #555
       active: #111
     }
-    shadow: 0 1 2 rgba(0, 0, 0, 0.25)
-    animation: fadeIn(0.3s)
+    shadow: 0 1 2 rgba(0,0,0,0.25)
+    animation: "fadeIn(0.3s)"
     cursor: pointer
   }
 
@@ -79,8 +79,8 @@ multi line string example`
 
   // Nested arrays
   grid: [
-    [1fr 2fr 1fr]
-    [2fr 1fr 2fr]
+    ["1fr","2fr","1fr"]
+    ["2fr","1fr","2fr"]
   ]
 
   // Flexible keys and identifiers
@@ -102,7 +102,7 @@ extra {
   optionalFlag
 }
 
-/* Metadata kinda random shi */
+/* Metadata block */
 metadata {
   createdby: s16
   version: 1.0
@@ -115,7 +115,7 @@ metadata {
 
 /* Misc settings demonstrating optional semicolons and trailing commas */
 misc {
-  note: this is a csson file
+  note: "this is a csson file"
   debug: false
   tempList: [
     1
@@ -123,3 +123,4 @@ misc {
     3
   ]
 }
+
