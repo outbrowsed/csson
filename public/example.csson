@@ -1,10 +1,10 @@
-// config
-/* jsdoc comment allowed */
+/* jsdoc comments allowed */
 theme {
-  color: #ff0000
-  fontsize: 16px
+  color: #ff0000;
+  fontsize: 16px;
   description: `This is a
-multi-line string example`  // multi line string
+multi line string example` // multi line string
+
 }
 
 // array (u can also use json inside csson because its a json superset)
@@ -20,9 +20,9 @@ extra {
 
 /* jsdoc comment */
 metadata {
-  createdby: "s16"
-  version: 1.0
-  tags: ["demo", "csson", "example"] // array of tags
+  createdby: s16;
+  version: 1.0;
+  tags: ["demo", "csson", "example"]; // array of tags
 }
 
 // optional trailing commas and semicolons are allowed
