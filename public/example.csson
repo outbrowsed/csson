@@ -1,32 +1,125 @@
-/* jsdoc comments allowed */
+ /* css like syntax*/
 theme {
-  color: #ff0000;
-  fontsize: 16px;
-  description: `This is a
-multi line string example` // multi line string
+  color #ff0000
+  secondaryColor #00ffcc
 
+  fontSize 16px
+  lineHeight 1.5em
+  fontFamily [
+    Roboto
+    Monospace
+    Arial
+  ]
+
+  // Booleans / keywords
+  darkMode
+  enabled true
+  debug false
+  unsetValue null
+
+  // Multi line string
+  description `This is a
+multi line string example`
+
+  // Functions and references
+  gradient linear-gradient #fff #000
+  widthCalc calc 100% - 20px
+  mainColor color
+
+  // Nested objects
+  header {
+    height 60px
+    background #111
+    shadow 0 2 4 rgba 0 0 0 0.5
+    links [
+      Home
+      About
+      Contact
+    ]
+    sticky
+  }
+
+  button {
+    padding 0.5em 1em
+    borderRadius 5px
+    colors {
+      normal #333
+      hover #555
+      active #111
+    }
+    shadow 0 1 2 rgba 0 0 0 0.25
+    animation fadeIn 0.3s
+    cursor pointer
+  }
+
+  // css like dashed key
+  background-color #222
+
+  // Optional trailing commas semicolons
+  margins [
+    10px
+    15px
+    10px
+    15px
+  ]
+  paddings [
+    5px
+    10px
+  ]
+  list [
+    1
+    2
+    3
+  ]
+  features {
+    smoothScrolling
+    responsive true
+    animations
+  }
+
+  // Nested arrays
+  grid [
+    [1fr 2fr 1fr]
+    [2fr 1fr 2fr]
+  ]
+
+  // Flexible keys and identifiers
+  complex-key value
+  $pecial_key_123 42
+  DarkModeForEveryone
 }
 
-// array (u can also use json inside csson because its a json superset)
+/* Users array demonstrating json superset */
 users [
-  "alice"
-  "bob"
+  alice
+  bob
+  charlie
 ]
 
+/* Extra nested objects and shorthand booleans */
 extra {
-  nestedKey: "value"  // nested object
-  optionalFlag        // will default to true
+  nestedKey value
+  optionalFlag
 }
 
-/* jsdoc comment */
+/* Metadata kinda random shi */
 metadata {
-  createdby: s16;
-  version: 1.0;
-  tags: ["demo", "csson", "example"]; // array of tags
+  createdby s16
+  version 1.0
+  tags [
+    demo
+    csson
+    example
+  ]
 }
 
-// optional trailing commas and semicolons are allowed
+/* Misc settings demonstrating optional semicolons and trailing commas */
 misc {
-  note: "this is a csson file"
-  debug: false
+  note this is a csson file
+  debug false
+  tempList [
+    1
+    2
+    3
+  ]
 }
