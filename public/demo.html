@@ -2,8 +2,38 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>CSSON Demo</title>
+        <title>OutBrowsed | CSSON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Utility JSON superset" />
+        <meta name="keywords" content="outbrowsed, project, csson, json, superset" />
+        <meta name="author" content="@OutBrowsed" />
+        <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta name="language" content="English" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <link
+            rel="preload"
+            as="image"
+            href="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
+        />
+        <link
+            rel="preload"
+            as="font"
+            href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+            crossorigin
+        />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:; font-src *; connect-src *; frame-src *;"
+        />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta
+            http-equiv="Permissions-Policy"
+            content="geolocation=(), microphone=(), camera=(), payment=()"
+        />
         <link
             href="https://framerusercontent.com/images/EKbJ5Et5vOKk2VINxvmhpPX6Lg8.png"
             rel="icon"
@@ -16,8 +46,18 @@
         />
         <link
             rel="apple-touch-icon"
+            sizes="180x180"
             href="https://framerusercontent.com/images/nHrIMisnVn3Fgn9GZhki9WpKo.png"
         />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+            name="msapplication-TileImage"
+            content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
+        />
+        <link rel="preconnect" href="https://framerusercontent.com" crossorigin />
+        <link rel="dns-prefetch" href="https://framerusercontent.com" />
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="OutBrowsed | CSSON" />
         <meta property="og:description" content="Utility JSON superset" />
@@ -25,6 +65,13 @@
             property="og:image"
             content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
         />
+        <meta property="og:image:alt" content="OutBrowsed Logo" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://outbrowsed.xyz" />
+        <meta property="og:site_name" content="OutBrowsed" />
+        <meta property="og:locale" content="en_US" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="OutBrowsed | CSSON" />
         <meta name="twitter:description" content="Utility JSON superset" />
@@ -32,23 +79,53 @@
             name="twitter:image"
             content="https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png"
         />
+        <meta name="twitter:image:alt" content="OutBrowsed Logo" />
+        <meta name="twitter:creator" content="@OutBrowsed" />
+        <meta name="twitter:site" content="@OutBrowsed" />
+        <meta name="apple-mobile-web-app-title" content="OutBrowsed | CSSON" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "OutBrowsed",
+                "url": "https://outbrowsed.xyz",
+                "description": "",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "OutBrowsed",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png",
+                        "width": 1200,
+                        "height": 630
+                    }
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://framerusercontent.com/images/zL3PEjX0vftOWNT8u24lzNacUGo.png",
+                    "width": 1200,
+                    "height": 630
+                },
+                "inLanguage": "en-US",
+                "sameAs": []
+            }
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
-            @import url("https://github.com/gustambolopez/Files/blob/main/opensans.css");
-            @import url("https://cdn.jsdelivr.net/gh/gustambolopez/Files@main/sf_pro.css");
-            @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
-            @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
-            @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap");
-
             * {
                 scroll-behavior: smooth;
             }
-
             *::-webkit-scrollbar {
-                width: 0px;
-                height: 0px;
+                width: 0;
+                height: 0;
             }
-
             * {
                 -ms-overflow-style: none;
                 scrollbar-width: none;
@@ -56,30 +133,21 @@
             body {
                 font-family:
                     "Onest",
-                    "opensans",
-                    "SF Pro Display",
-                    "SF Pro Text",
-                    "Nunito",
-                    "Plus Jakarta Sans",
-                    "Lexend",
                     system-ui,
                     -apple-system,
                     BlinkMacSystemFont,
                     sans-serif;
-                background: #ffffff;
-                color: #000000;
+                background: #fff;
+                color: #000;
                 padding: 20px;
-                scroll-behavior: smooth;
-                scrollbar-width: none;
             }
-
             input,
-            textarea {
+            textarea,
+            pre {
                 font-family: "JetBrains Mono", "Source Code Pro", monospace;
                 background: #f0f0f0;
-                color: #000000;
+                color: #000;
                 border: none;
-                outline: none;
                 border-radius: 10px;
                 padding: 10px;
                 width: 100%;
@@ -87,42 +155,13 @@
                 overflow: auto;
                 scroll-behavior: smooth;
             }
-
             textarea {
                 height: 200px;
                 resize: vertical;
             }
-
-            pre {
-                font-family: "JetBrains Mono", "Source Code Pro", monospace;
-                background: #f0f0f0;
-                color: #000000;
-                border: none;
-                border-radius: 10px;
-                padding: 10px;
-                width: 100%;
-                overflow-x: auto;
-                box-sizing: border-box;
-                scroll-behavior: smooth;
-            }
-
-            input::-webkit-scrollbar,
-            textarea::-webkit-scrollbar,
-            pre::-webkit-scrollbar {
-                width: 0px;
-                height: 0px;
-            }
-
-            input,
-            textarea,
-            pre {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-
             button {
-                background: #000000;
-                color: #ffffff;
+                background: #000;
+                color: #fff;
                 border: none;
                 border-radius: 10px;
                 padding: 8px 12px;
@@ -131,20 +170,17 @@
                 cursor: pointer;
                 font-family: inherit;
             }
-
             button:hover {
-                background: #333333;
+                background: #333;
             }
-
             h1,
             h2 {
-                color: #000000;
+                color: #000;
             }
         </style>
     </head>
     <body>
         <h1>csson demo</h1>
-
         <textarea id="cssoncode" placeholder="csson content will be loaded here"></textarea><br />
         <button id="parsecsson">Parse csson</button>
         <button id="export">Export as json</button>
@@ -171,12 +207,12 @@
             >
                 <img
                     class="icon"
-                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M16%202H12C9.17157%202%207.75736%202%206.87868%202.94627C6%203.89254%206%205.41554%206%208.46154V9.53846C6%2012.5845%206%2014.1075%206.87868%2015.0537C7.75736%2016%209.17157%2016%2012%2016H16C18.8284%2016%2020.2426%2016%2021.1213%2015.0537C22%2014.1075%2022%2012.5845%2022%209.53846V8.46154C22%205.41554%2022%203.89254%2021.1213%202.94627C20.2426%202%2018.8284%202%2016%202Z%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3Cpath%20d%3D%22M18%2016.6082C17.9879%2018.9537%2017.8914%2020.2239%2017.123%2021.0525C16.2442%2022%2014.8298%2022%2012.0011%2022H8.00065C5.17192%2022%203.75755%2022%202.87878%2021.0525C2%2020.1049%202%2018.5799%202%2015.5298V14.4515C2%2011.4014%202%209.87638%202.87878%208.92885C3.52015%208.2373%204.44682%208.05047%206.00043%208%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='M16 2H12C9.17157 2 7.75736 2 6.87868 2.94627C6 3.89254 6 5.41554 6 8.46154V9.53846C6 12.5845 6 14.1075 6.87868 15.0537C7.75736 16 9.17157 16 12 16H16C18.8284 16 20.2426 16 21.1213 15.0537C22 14.1075 22 12.5845 22 9.53846V8.46154C22 5.41554 22 3.89254 21.1213 2.94627C20.2426 2 18.8284 2 16 2Z' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3Cpath d='M18 16.6082C17.9879 18.9537 17.8914 20.2239 17.123 21.0525C16.2442 22 14.8298 22 12.0011 22H8.00065C5.17192 22 3.75755 22 2.87878 21.0525C2 20.1049 2 18.5799 2 15.5298V14.4515C2 11.4014 2 9.87638 2.87878 8.92885C3.52015 8.2373 4.44682 8.05047 6.00043 8' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
                     style="width: 20px; height: 20px; transition: opacity 0.3s"
                 />
                 <img
                     class="check"
-                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22m4.5%2012.75%206%206%209-13.5%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='m4.5 12.75 6 6 9-13.5' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
                     style="
                         width: 20px;
                         height: 20px;
@@ -190,7 +226,6 @@
                 />
             </button>
         </div>
-
         <h2>Stringified csson:</h2>
         <div style="position: relative">
             <pre id="stringifiedOutput"></pre>
@@ -214,12 +249,12 @@
             >
                 <img
                     class="icon"
-                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22M16%202H12C9.17157%202%207.75736%202%206.87868%202.94627C6%203.89254%206%205.41554%206%208.46154V9.53846C6%2012.5845%206%2014.1075%206.87868%2015.0537C7.75736%2016%209.17157%2016%2012%2016H16C18.8284%2016%2020.2426%2016%2021.1213%2015.0537C22%2014.1075%2022%2012.5845%2022%209.53846V8.46154C22%205.41554%2022%203.89254%2021.1213%202.94627C20.2426%202%2018.8284%202%2016%202Z%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3Cpath%20d%3D%22M18%2016.6082C17.9879%2018.9537%2017.8914%2020.2239%2017.123%2021.0525C16.2442%2022%2014.8298%2022%2012.0011%2022H8.00065C5.17192%2022%203.75755%2022%202.87878%2021.0525C2%2020.1049%202%2018.5799%202%2015.5298V14.4515C2%2011.4014%202%209.87638%202.87878%208.92885C3.52015%208.2373%204.44682%208.05047%206.00043%208%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='M16 2H12C9.17157 2 7.75736 2 6.87868 2.94627C6 3.89254 6 5.41554 6 8.46154V9.53846C6 12.5845 6 14.1075 6.87868 15.0537C7.75736 16 9.17157 16 12 16H16C18.8284 16 20.2426 16 21.1213 15.0537C22 14.1075 22 12.5845 22 9.53846V8.46154C22 5.41554 22 3.89254 21.1213 2.94627C20.2426 2 18.8284 2 16 2Z' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3Cpath d='M18 16.6082C17.9879 18.9537 17.8914 20.2239 17.123 21.0525C16.2442 22 14.8298 22 12.0011 22H8.00065C5.17192 22 3.75755 22 2.87878 21.0525C2 20.1049 2 18.5799 2 15.5298V14.4515C2 11.4014 2 9.87638 2.87878 8.92885C3.52015 8.2373 4.44682 8.05047 6.00043 8' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
                     style="width: 20px; height: 20px; transition: opacity 0.3s"
                 />
                 <img
                     class="check"
-                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20height%3D%2224%22%3E%3Cpath%20d%3D%22m4.5%2012.75%206%206%209-13.5%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%221.1%22%20stroke%3D%22%23ffffff%22%20fill%3D%22none%22%3E%3C/path%3E%3C/svg%3E"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='m4.5 12.75 6 6 9-13.5' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
                     style="
                         width: 20px;
                         height: 20px;
@@ -233,29 +268,22 @@
                 />
             </button>
         </div>
-
         <script type="module">
-            // it can be also imported as CSSON since its case insensitive same for all csson imports
             import { csson } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson@main/src/index.min.mjs";
-
             let parsedObj = null;
-            // load the csson file
             const demo = "./example.csson";
-
-            const update = () => {
-                objOutput.textContent = JSON.stringify(parsedObj, null, 2);
-                // stringify the object
-                output.textContent = csson.stringify(parsedObj);
-            };
             const cssonInput = document.getElementById("cssoncode");
             const parsebutton = document.getElementById("parsecsson");
-
+            const objOutput = document.getElementById("parsedoutput");
+            const output = document.getElementById("stringifiedOutput");
+            const update = () => {
+                objOutput.textContent = JSON.stringify(parsedObj, null, 2);
+                output.textContent = csson.stringify(parsedObj);
+            };
             const parseInput = () => {
-                // similar to json we use csson.parse or csson.stringify CSSON.parse and CSSON.stringify also work
                 parsedObj = csson.parse(cssonInput.value);
                 update();
             };
-            const objOutput = document.getElementById("parsedoutput");
             const loadcsson = async (file) => {
                 try {
                     const text = await (await fetch(file)).text();
@@ -265,18 +293,15 @@
                     objOutput.textContent = `failed to load csson file: ${e.message}`;
                 }
             };
-
             document.querySelectorAll(".copyBtn").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const targetId = btn.getAttribute("data-target");
                     const content = document.getElementById(targetId).textContent;
                     const icon = btn.querySelector(".icon");
                     const check = btn.querySelector(".check");
-
                     navigator.clipboard.writeText(content).then(() => {
                         icon.style.opacity = "0";
                         check.style.opacity = "1";
-
                         setTimeout(() => {
                             icon.style.opacity = "1";
                             check.style.opacity = "0";
@@ -286,7 +311,6 @@
             });
             const exportJson = document.getElementById("export");
             const exportjson = () => {
-                // export the parsed output as a json file
                 if (!parsedObj) return alert("Parse CSSON first!");
                 const blob = new Blob([JSON.stringify(parsedObj, null, 2)], {
                     type: "application/json",
@@ -296,10 +320,8 @@
                 a.download = "export.json";
                 a.click();
             };
-
             parsebutton.addEventListener("click", parseInput);
             exportJson.addEventListener("click", exportjson);
-            const output = document.getElementById("stringifiedOutput");
             loadcsson(demo);
         </script>
     </body>
