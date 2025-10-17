@@ -1,123 +1,123 @@
- /* css like syntax*/
+/* css like syntax */
 theme {
-  color #ff0000
-  secondaryColor #00ffcc
+  color: #ff0000
+  secondaryColor: #00ffcc
 
-  fontSize 16px
-  lineHeight 1.5em
-  fontFamily [
-    Roboto
-    Monospace
-    Arial
+  fontSize: 16px
+  lineHeight: 1.5em
+  fontFamily: [
+    "Roboto"
+    "Monospace"
+    "Arial"
   ]
 
   // Booleans / keywords
   darkMode
-  enabled true
-  debug false
-  unsetValue null
+  enabled: true
+  debug: false
+  unsetValue: null
 
   // Multi line string
-  description `This is a
+  description: `This is a
 multi line string example`
 
   // Functions and references
-  gradient linear-gradient #fff #000
-  widthCalc calc 100% - 20px
-  mainColor color
+  gradient: linear-gradient(#fff, #000)
+  widthCalc: calc(100% - 20px)
+  mainColor: color
 
   // Nested objects
   header {
-    height 60px
-    background #111
-    shadow 0 2 4 rgba 0 0 0 0.5
-    links [
-      Home
-      About
-      Contact
+    height: 60px
+    background: #111
+    shadow: 0 2 4 rgba(0, 0, 0, 0.5)
+    links: [
+      "Home"
+      "About"
+      "Contact"
     ]
     sticky
   }
 
   button {
-    padding 0.5em 1em
-    borderRadius 5px
+    padding: 0.5em 1em
+    borderRadius: 5px
     colors {
-      normal #333
-      hover #555
-      active #111
+      normal: #333
+      hover: #555
+      active: #111
     }
-    shadow 0 1 2 rgba 0 0 0 0.25
-    animation fadeIn 0.3s
-    cursor pointer
+    shadow: 0 1 2 rgba(0, 0, 0, 0.25)
+    animation: fadeIn(0.3s)
+    cursor: pointer
   }
 
   // css like dashed key
-  background-color #222
+  background-color: #222
 
   // Optional trailing commas semicolons
-  margins [
+  margins: [
     10px
     15px
     10px
     15px
   ]
-  paddings [
+  paddings: [
     5px
     10px
   ]
-  list [
+  list: [
     1
     2
     3
   ]
   features {
     smoothScrolling
-    responsive true
+    responsive: true
     animations
   }
 
   // Nested arrays
-  grid [
+  grid: [
     [1fr 2fr 1fr]
     [2fr 1fr 2fr]
   ]
 
   // Flexible keys and identifiers
-  complex-key value
-  $pecial_key_123 42
+  complex-key: value
+  $pecial_key_123: 42
   DarkModeForEveryone
 }
 
 /* Users array demonstrating json superset */
-users [
-  alice
-  bob
-  charlie
+users: [
+  "alice"
+  "bob"
+  "charlie"
 ]
 
 /* Extra nested objects and shorthand booleans */
 extra {
-  nestedKey value
+  nestedKey: value
   optionalFlag
 }
 
 /* Metadata kinda random shi */
 metadata {
-  createdby s16
-  version 1.0
-  tags [
-    demo
-    csson
-    example
+  createdby: s16
+  version: 1.0
+  tags: [
+    "demo"
+    "csson"
+    "example"
   ]
 }
 
 /* Misc settings demonstrating optional semicolons and trailing commas */
 misc {
-  note this is a csson file
-  debug false
-  tempList [
+  note: this is a csson file
+  debug: false
+  tempList: [
     1
     2
     3
