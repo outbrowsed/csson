@@ -40,7 +40,7 @@ multi line string example`
   }
 
   button {
-    padding: 0.5em 1em
+    padding: "0.5em 1em"
     borderRadius: 5px
     colors {
       normal: #333
@@ -123,4 +123,5 @@ misc {
     3
   ]
 }
+
 
