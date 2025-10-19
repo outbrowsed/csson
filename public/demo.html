@@ -225,6 +225,7 @@
     </head>
     <body>
         <h1>csson demo</h1>
+        <h2>CSSON to JSON</h2>
         <textarea
             id="cssoncode"
             placeholder="csson content will be loaded here"
@@ -319,141 +320,62 @@
                 />
             </button>
         </div>
+
+        <h2>JSON to CSSON</h2>
+        <textarea
+            id="jsoncode"
+            placeholder="json content will be loaded here"
+            spellcheck="false"
+        ></textarea
+        ><br />
+        <button id="parsejson">Convert to csson</button>
+        <button id="importjson">Import json</button>
+        <button id="exportcsson">Export as csson</button>
+        <input type="file" id="jsonFileInput" accept=".json" />
+        <h2>CSSON output:</h2>
+        <div style="position: relative">
+            <pre><code id="parsedjsonoutput" class="language-css"></code></pre>
+            <button
+                class="copyBtn"
+                data-target="parsedjsonoutput"
+                title="Copy"
+                style="
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: #000;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 6px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                "
+            >
+                <img
+                    class="icon"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='M16 2H12C9.17157 2 7.75736 2 6.87868 2.94627C6 3.89254 6 5.41554 6 8.46154V9.53846C6 12.5845 6 14.1075 6.87868 15.0537C7.75736 16 9.17157 16 12 16H16C18.8284 16 20.2426 16 21.1213 15.0537C22 14.1075 22 12.5845 22 9.53846V8.46154C22 5.41554 22 3.89254 21.1213 2.94627C20.2426 2 18.8284 2 16 2Z' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3Cpath d='M18 16.6082C17.9879 18.9537 17.8914 20.2239 17.123 21.0525C16.2442 22 14.8298 22 12.0011 22H8.00065C5.17192 22 3.75755 22 2.87878 21.0525C2 20.1049 2 18.5799 2 15.5298V14.4515C2 11.4014 2 9.87638 2.87878 8.92885C3.52015 8.2373 4.44682 8.05047 6.00043 8' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
+                    style="width: 20px; height: 20px; transition: opacity 0.3s"
+                />
+                <img
+                    class="check"
+                    src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 24 24'%20width='24'%20height='24'%3E%3Cpath d='m4.5 12.75 6 6 9-13.5' stroke-linejoin='round' stroke-linecap='round' stroke-width='1.1' stroke='%23fff' fill='none'/%3E%3C/svg%3E"
+                    style="
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 6px;
+                        left: 6px;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0.3s;
+                    "
+                />
+            </button>
+        </div>
         <div class="toast" id="toast"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script type="module">
-            import { csson } from "https://cdn.jsdelivr.net/gh/outbrowsed/csson@main/src/index.min.mjs";
-            let parsedObj = null;
-            let debounceTimer = null;
-            const demo = "example.csson";
-
-            const toast = document.getElementById("toast");
-            const showToast = (msg, type = "success") => {
-                toast.textContent = msg;
-                toast.className = `toast ${type} show`;
-                setTimeout(() => toast.classList.remove("show"), 3000);
-            };
-            const update = () => {
-                objOutput.className = "language-json";
-                output.className = "language-json";
-                objOutput.textContent = JSON.stringify(parsedObj, null, 2);
-                output.textContent = csson.stringify(parsedObj);
-                delete objOutput.dataset.highlighted;
-                delete output.dataset.highlighted;
-                hljs.highlightElement(objOutput);
-                hljs.highlightElement(output);
-                objOutput.parentElement.classList.add("fade-in");
-                output.parentElement.classList.add("fade-in");
-                setTimeout(() => {
-                    objOutput.parentElement.classList.remove("fade-in");
-                    output.parentElement.classList.remove("fade-in");
-                }, 300);
-            };
-            const cssonInput = document.getElementById("cssoncode");
-            const parsebutton = document.getElementById("parsecsson");
-
-            const parseInput = () => {
-                try {
-                    parsedObj = csson.parse(cssonInput.value);
-                    update();
-                } catch (e) {
-                    showToast(`Parse error: ${e.message}`, "error");
-                }
-            };
-            const objOutput = document.getElementById("parsedoutput");
-            const output = document.getElementById("stringifiedOutput");
-
-            const loadcsson = async (file) => {
-                try {
-                    const text = await (await fetch(file)).text();
-                    cssonInput.value = text;
-                    parseInput();
-                } catch (e) {
-                    objOutput.textContent = `failed to load csson file: ${e.message}`;
-                }
-            };
-            cssonInput.addEventListener("input", () => {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(parseInput, 500);
-            });
-            cssonInput.addEventListener("keydown", (e) => {
-                if (e.key === "Tab") {
-                    e.preventDefault();
-                    const start = e.target.selectionStart;
-                    const end = e.target.selectionEnd;
-                    e.target.value =
-                        e.target.value.substring(0, start) + "  " + e.target.value.substring(end);
-                    e.target.selectionStart = e.target.selectionEnd = start + 2;
-                }
-                if (e.key === "Enter") {
-                    const start = e.target.selectionStart;
-                    const lines = e.target.value.substring(0, start).split("\n");
-                    const currentLine = lines[lines.length - 1];
-                    const indent = currentLine.match(/^\s*/)[0];
-                    setTimeout(() => {
-                        const newStart = e.target.selectionStart;
-                        e.target.value =
-                            e.target.value.substring(0, newStart) +
-                            indent +
-                            e.target.value.substring(newStart);
-                        e.target.selectionStart = e.target.selectionEnd = newStart + indent.length;
-                    }, 0);
-                }
-                if (e.ctrlKey && e.key === "Enter") {
-                    e.preventDefault();
-                    parseInput();
-                }
-            });
-            document.querySelectorAll(".copyBtn").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const targetId = btn.getAttribute("data-target");
-                    const content = document.getElementById(targetId).textContent;
-                    const icon = btn.querySelector(".icon");
-                    const check = btn.querySelector(".check");
-                    navigator.clipboard.writeText(content).then(() => {
-                        icon.style.opacity = "0";
-                        check.style.opacity = "1";
-                        showToast("Copied to clipboard");
-                        setTimeout(() => {
-                            icon.style.opacity = "1";
-                            check.style.opacity = "0";
-                        }, 1200);
-                    });
-                });
-            });
-            const exportJson = document.getElementById("export");
-            const exportjson = () => {
-                if (!parsedObj) {
-                    showToast("Parse CSSON first", "error");
-                    return;
-                }
-                const blob = new Blob([JSON.stringify(parsedObj, null, 2)], {
-                    type: "application/json",
-                });
-                const a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
-                a.download = "export.json";
-                a.click();
-                showToast("JSON exported successfully");
-            };
-            const fileInput = document.getElementById("fileInput");
-            document.getElementById("import").addEventListener("click", () => fileInput.click());
-            fileInput.addEventListener("change", (e) => {
-                if (e.target.files[0]) {
-                    const reader = new FileReader();
-                    reader.onload = (ev) => {
-                        cssonInput.value = ev.target.result;
-                        updateLineNumbers();
-                        parseInput();
-                        showToast("File imported successfully");
-                    };
-                    reader.onerror = () => showToast("Failed to read file", "error");
-                    reader.readAsText(e.target.files[0]);
-                }
-            });
-            parsebutton.addEventListener("click", parseInput);
-            exportJson.addEventListener("click", exportjson);
-            loadcsson(demo);
-        </script>
+        <script type="module" src="parse.js"></script>
     </body>
 </html>
